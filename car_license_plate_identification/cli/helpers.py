@@ -1,6 +1,3 @@
-import sys
-
-
 def extract_argument_value(args, key_name):
     expected_prefix = f"--{key_name}="
     expected_flag = f"--{key_name}"
