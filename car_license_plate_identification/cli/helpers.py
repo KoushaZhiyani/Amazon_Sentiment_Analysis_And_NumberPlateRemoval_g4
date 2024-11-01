@@ -2,15 +2,14 @@ import sys
 
 
 def extract_argument_value(args, key_name):
-    # Construct the expected argument prefix with double dashes
     expected_prefix = f"--{key_name}="
+    expected_flag = f"--{key_name}"
 
-    # Iterate over the arguments to find the one that matches the expected prefix
-    for arg in args:
+    for index, arg in enumerate(args):
         if arg.startswith(expected_prefix):
-            # Extract the value after the prefix
-            value = arg[len(expected_prefix):]
-            return value
+            return arg[len(expected_prefix):]
 
-    # Raise an error if the key is not found
+        elif arg == expected_flag and index + 1 < len(args):
+            return args[index + 1]
+
     raise ValueError(f"Argument '--{key_name}' not found in arguments.")
