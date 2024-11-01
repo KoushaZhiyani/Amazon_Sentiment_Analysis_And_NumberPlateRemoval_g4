@@ -23,12 +23,12 @@ Download the pre-trained model file from [this link](https://drive.google.com/fi
 To execute the model on a set of images, run one of the following commands:
 
 ```bash
-python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night True
+python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night true
 ```
 This command will skip blurring images taken at night.
 
 ```bash
-python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night False
+python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night false
 ```
 This command will process all images, including those taken at night.
 
