@@ -2,6 +2,7 @@ import cv2 as cv
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import os
+from ..day_and_night_classifier.day_night_classifier import classify_image_with_estimator
 
 
 def mean_average_precision(y_true, y_pred):
@@ -26,10 +27,16 @@ seg_model = load_model("car_license_plate_identification/model/MobileNetV2_95_50
                        custom_objects={"mean_average_precision": mean_average_precision})
 
 
-def blur_images(input, output):
-    for img_file in os.listdir(input):
+def blur_images(input_dir, output_dir, skip_nights=True):
+    for img_file in os.listdir(input_dir):
         if img_file.endswith('.png') or img_file.endswith('.jpg'):
-            path = os.path.join(input, img_file)
+            path = os.path.join(input_dir, img_file)
+
+            if skip_nights and classify_image_with_estimator(path) == 0:
+                print(f"Skipping {img_file} as it is a night image")
+
+                continue
+
             img = cv.imread(path)
             img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
             Original_image = img.copy()
@@ -45,4 +52,4 @@ def blur_images(input, output):
             plate = Original_image[ymin: ymax, xmin: xmax]
             blur_plate = cv.GaussianBlur(plate, (101, 101), 0)
             Original_image[ymin: ymax, xmin: xmax] = blur_plate
-            cv.imwrite(f"{output}/{img_file}", Original_image)
+            cv.imwrite(f"{output_dir}/{img_file}", Original_image)
