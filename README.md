@@ -19,12 +19,24 @@ git clone https://github.com/realBagher/Amazon_Sentiment_Analysis_And_NumberPlat
 ### 2. Download the Pre-trained Model
 Download the pre-trained model file from [this link](https://drive.google.com/file/d/1rtCTLDdEkBxdfsvzc9TS31Z0HXiTTP6X/view?usp=drive_link) and save it in the `Model` folder in the cloned repository.
 
-#### 3. Run the Model
-To execute the model on a set of images, run the following command:
+### 3. Run the Model
+To execute the model on a set of images, run one of the following commands:
+
+```bash
+python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night True
+```
+This command will skip blurring images taken at night.
+
+```bash
+python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images" --skip-night False
+```
+This command will process all images, including those taken at night.
 
 ```bash
 python blurring.py --input "/path/to/images" --output "/path/to/save/blurred/images"
 ```
+If the `--skip-night` option is not specified, it defaults to `True`, meaning images taken at night will be skipped.
+
 
 Replace `/path/to/images` with the path to your images folder and `/path/to/save/blurred/images` with the desired output path.
 
