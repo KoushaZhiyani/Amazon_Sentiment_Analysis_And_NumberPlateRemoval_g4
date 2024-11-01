@@ -14,7 +14,3 @@ def extract_argument_value(args, key_name):
 
     # Raise an error if the key is not found
     raise ValueError(f"Argument '--{key_name}' not found in arguments.")
-
-
-def escape_spaces_in_path(path):
-    return path.replace(" ", "\\ ")

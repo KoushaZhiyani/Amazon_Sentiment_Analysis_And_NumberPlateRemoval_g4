@@ -3,14 +3,11 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import os
 import sys
-from helpers import extract_argument_value, escape_spaces_in_path
+from helpers import extract_argument_value
 
 
 input_path = extract_argument_value(sys.argv, 'input-path')
 output_path = extract_argument_value(sys.argv, 'output-path')
-
-print(f"{input_path}")
-print(f"{output_path}")
 
 def mean_average_precision(y_true, y_pred):
     y_true = tf.cast(y_true, tf.float32)
