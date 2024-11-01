@@ -6,10 +6,6 @@ input_path = extract_argument_value(sys.argv, 'input')
 output_path = extract_argument_value(sys.argv, 'output')
 skip_nights = extract_argument_value(sys.argv, 'skip-nights', 'true').lower()
 
-print(skip_nights)
-
 skip_nights = True if skip_nights == 'true' else False
 
-
 blur_images(input_path, output_path, skip_nights)
-
