@@ -27,7 +27,7 @@ def mean_average_precision(y_true, y_pred):
     return tf.reduce_mean(iou)
 
 
-seg_model = load_model("Car License Plate identification/Model/MobileNetV2_95_50layer.keras", custom_objects={"mean_average_precision": mean_average_precision})
+seg_model = load_model("car_license_plate_identification/Model/MobileNetV2_95_50layer.keras", custom_objects={"mean_average_precision": mean_average_precision})
 
 
 for img_file in os.listdir(input_path):
